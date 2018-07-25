@@ -67,7 +67,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="TextMeshPro-1.0.55.2017.1.0b12, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\TextMeshPro-1.0.55.2017.1.0b12.dll</HintPath>
+      <HintPath>J:\SteamLibrary\steamapps\common\Beat Saber\Beat Saber_Data\Managed\TextMeshPro-1.0.55.2017.1.0b12.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>J:\SteamLibrary\steamapps\common\Beat Saber\Beat Saber_Data\Managed\UnityEngine.dll</HintPath>
@@ -86,7 +86,10 @@
   <ItemGroup>
     <Compile Include="BailOutModePlugin.cs" />
     <Compile Include="Helpers\Redirection.cs" />
+    <Compile Include="Helpers\ReflectionUtil.cs" />
+    <Compile Include="Helpers\SettingsUI.cs" />
     <Compile Include="Patches\GameEnergyPatches.cs" />
+    <Compile Include="Patches\PauseMenuManagerPatches.cs" />
     <Compile Include="Patches\MenuMasterViewControllerPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

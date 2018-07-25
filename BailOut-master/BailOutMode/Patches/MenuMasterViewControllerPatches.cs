@@ -7,19 +7,17 @@ using Ryder.Lightweight;
 
 namespace BailOutMode.Patches
 {
-    class MenuMasterViewControllerPatches
+    class ResultsViewControllerPatches
     {
         private static Redirection didActivateRedirection;
 
         public static void PatchMethods()
         {
-            MethodInfo didActivateInfo =
-                //typeof(MenuMasterViewController).GetMethod("DidActivate", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo didActivateInfo = typeof(ResultsViewController).GetMethod("DidActivate", BindingFlags.NonPublic | BindingFlags.Instance);
 
-                //Custom (Jumpman): My method only works if you make it to the end of the song. Could I make it better? Maybe. Will I? Eh
-                typeof(ResultsViewController).GetMethod("DidActivate", BindingFlags.NonPublic | BindingFlags.Instance);
-            MethodInfo didActivatePatch =
-                typeof(MenuMasterViewControllerPatches).GetMethod(nameof(DidActivatePatch), BindingFlags.NonPublic | BindingFlags.Static);
+            //Custom (Jumpman): My method only works if you make it to the end of the song. Could I make it better? Maybe. Will I? Eh
+
+            MethodInfo didActivatePatch = typeof(ResultsViewControllerPatches).GetMethod(nameof(DidActivatePatch), BindingFlags.NonPublic | BindingFlags.Static);
             didActivateRedirection = new Redirection(didActivateInfo, didActivatePatch, true);
         }
 
@@ -39,7 +37,7 @@ namespace BailOutMode.Patches
             {
                 Console.Write(e);
             }
-           
+            BailOutModePlugin.BailedOut = false;
         }
     }
 }
