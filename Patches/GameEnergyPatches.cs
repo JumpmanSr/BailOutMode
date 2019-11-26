@@ -42,9 +42,13 @@ class GameEnergyPatches
 
         try
         {
+            
             typeof(GameEnergyCounter).GetField("<noFail>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(instance, true);
+            //typeof(GameEnergyCounter).GetField("<isInitialized>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(instance, true);
             BS_Utils.Gameplay.ScoreSubmission.DisableSubmission("Bailed Out");
-            //UnityEngine.Object.FindObjectOfType<GameEnergyUIPanel>().enabled = false; //test
+            
+            //typeof(GameEnergyUIPanel).Get("_energyBar", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(uIPanel, blankpic); // -----------------V maybe use self if really stuck
+            ((UnityEngine.UI.Image)typeof(GameEnergyUIPanel).GetField("_energyBar", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(UnityEngine.Object.FindObjectOfType<GameEnergyUIPanel>())).enabled = false;
             Console.WriteLine("[Bailout] Lethal energy reached, bailing out! [2/2]");
         }
         catch (Exception e)
@@ -52,7 +56,7 @@ class GameEnergyPatches
             Console.WriteLine(e);
             throw;
         }
-        value = 0f;
+        value = 100f;
         addEnergyRedirection.InvokeOriginal(self, value);
     }
     //Shoutout to foolish dave for the original idea, this has progressed over the years.
