@@ -3,6 +3,8 @@
 /////
 Latest Updates:
 
+12-27-2019 - 4:28 AM: Hi, I didn't realize this was broken. I have fixed core functionality. Just need to fix the extra bits (hiding health bar, and maybe ingame toggles) but expect an update either later today 12-27 or 12-28, ty for ur patience. 
+
 11-26-19: 1.69.69 Released, BS 1.5.0 Compatible. 
 
 11-23-2019: Putting finishing touches on update. Current version is still 1.5.0 compatible (Update BS_UTILS & CUSTOM UI) 
