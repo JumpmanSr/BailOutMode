@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using Ryder.Lightweight;
 
+
 namespace BailOutMode.Patches
 {
     class ResultsViewControllerPatches
@@ -21,14 +22,15 @@ namespace BailOutMode.Patches
             didActivateRedirection = new Redirection(didActivateInfo, didActivatePatch, true);
         }
 
-        private static void DidActivatePatch(object self, bool value1, VRUI.VRUIViewController.ActivationType value2)
+        private static void DidActivatePatch(object self, bool value1, HMUI.ViewController.ActivationType value2)
         {
             didActivateRedirection.InvokeOriginal(self, value1, value2);
             try
             {
                 if (BailOutModePlugin.BailedOut)
                 {
-                    ((GameplayOptions)typeof(ResultsViewController).GetField("_gameplayOptions", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(self)).noEnergy = false;
+                    //((GameplayOptions)typeof(ResultsViewController).GetField("_gameplayOptions", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(self)).noEnergy = false;
+                    //BS_Utils.Plugin.LevelData.GameplayCoreSceneSetupData.gameplayModifiers.noFail = false;
                     BailOutModePlugin.BailedOut = false;
                     Console.WriteLine("[BailOut] Reset No Fail");
                 }

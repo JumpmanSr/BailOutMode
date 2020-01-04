@@ -42,10 +42,9 @@ namespace BailOutMode.Patches
             {
                 if (BailOutModePlugin.BailedOut)
                 {
-                    var sceneSetup = UnityEngine.Object.FindObjectOfType<MainGameSceneSetup>();
-                    MainGameSceneSetupData setupData = typeof(MainGameSceneSetup).GetField("_mainGameSceneSetupData", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(sceneSetup) as MainGameSceneSetupData;
-                    setupData.gameplayOptions.noEnergy = false;
+                    //BS_Utils.Plugin.LevelData.GameplayCoreSceneSetupData.gameplayModifiers.noFail = false;
                     BailOutModePlugin.BailedOut = false;
+                    Console.WriteLine("[BailOut] Reset No Fail");
                 }
             }
             catch (Exception e)

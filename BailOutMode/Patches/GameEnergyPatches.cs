@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Reflection;
 using Ryder.Lightweight;
-using TMPro;
+//using TMPro;
 using UnityEngine;
+using BS_Utils;
 
 class GameEnergyPatches
 {
     private static Redirection addEnergyRedirection;
-    public static TextMeshPro bailoutNotificationText;
 
     public static void PatchMethods()
     {
@@ -28,7 +28,6 @@ class GameEnergyPatches
         }
 
         
-
         GameEnergyCounter instance = (GameEnergyCounter) self;
         if (!(instance.energy + value <= 1E-05f) || BailOutModePlugin.BailedOut)
         {
@@ -36,54 +35,30 @@ class GameEnergyPatches
             return;
         }
 
-        if (BailOutModePlugin.bailoutNotification) showBailoutNotification();
-        Console.WriteLine("[Bailout] Lethal energy reached, bailing out!");
+        //if (BailOutModePlugin.bailoutNotification) showBailoutNotification();
+        Console.WriteLine("[Bailout] Lethal energy reached, bailing out! [1/4]");
         BailOutModePlugin.BailedOut = true;
-        
 
         try
         {
-            typeof(GameEnergyCounter).GetField("_cannotFail", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(instance, true);
-
-            var sceneSetup = UnityEngine.Object.FindObjectOfType<MainGameSceneSetup>();
-            MainGameSceneSetupData setupData = typeof(MainGameSceneSetup).GetField("_mainGameSceneSetupData", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(sceneSetup) as MainGameSceneSetupData;
-            setupData.gameplayOptions.noEnergy = true;
-
-            UnityEngine.Object.FindObjectOfType<GameEnergyUIPanel>().EnableEnergyPanel(false);
+            
+            typeof(GameEnergyCounter).GetField("<noFail>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(instance, true);
+            //typeof(GameEnergyCounter).GetField("noFail", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(instance, true);
+            //typeof(GameEnergyCounter).GetField("<isInitialized>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(instance, true);
+            Console.WriteLine("[Bailout] Disabling score submission[2/4]");
+            BS_Utils.Gameplay.ScoreSubmission.DisableSubmission("Bailed Out");
+            Console.WriteLine("[Bailout] Disabling Ingame Energy Bar [3/4]");
+            UnityEngine.Object.FindObjectOfType<GameEnergyUIPanel>().gameObject.SetActive(false);
+            Console.WriteLine("[Bailout] Bailed out [4/4]");
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
         }
-        value = 0;
+        value = 100f;
         addEnergyRedirection.InvokeOriginal(self, value);
     }
-    //Shoutout to foolish dave for all of this.
-
-
-    //Shoutout to  andruzzzhka living up to his name of UI wizard.
-    static void showBailoutNotification()
-    {
-        bailoutNotificationText = CreateWorldText((new GameObject()).transform, "");
-        bailoutNotificationText.rectTransform.anchoredPosition3D = new Vector3(9.2f, -6f, 8f);
-        bailoutNotificationText.color = Color.white;
-        bailoutNotificationText.fontSize = 5f;
-        bailoutNotificationText.text = "Bailed Out!";
-    }
-
-    public static TextMeshPro CreateWorldText(Transform parent, string text)
-    {
-        TextMeshPro textMesh = new GameObject("TextMeshPro_GO").AddComponent<TextMeshPro>();
-        textMesh.transform.SetParent(parent, false);
-        textMesh.text = text;
-        textMesh.fontSize = 5;
-        textMesh.color = Color.white;
-        textMesh.font = Resources.Load<TMP_FontAsset>("Teko-Medium SDF No Glow");
-
-
-        return textMesh;
-    }
-
+    //Shoutout to foolish dave for the original idea, this has progressed over the years.
 
 }
