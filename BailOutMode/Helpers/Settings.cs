@@ -14,7 +14,7 @@ namespace BailOutMode.Helpers
             if (File.Exists(Path.Combine(Environment.CurrentDirectory, "BailOutSettings.cfg")))
             {
                 string[] settings = File.ReadAllLines(Path.Combine(Environment.CurrentDirectory, "BailOutSettings.cfg"));
-                if (settings.Length != 2) //There can only be two settings, if this is wrong generate a new settings file.
+                if (settings.Length != 1) //Only 1 setting now
                 {
                     saveBailoutSettings();
                     loadBailoutSettings();
@@ -24,8 +24,8 @@ namespace BailOutMode.Helpers
 
                 if(settings[0].Split('=')[1].ToLower() == "true") { BailOutModePlugin.shouldIBail = true; } //setting1
                 else { BailOutModePlugin.shouldIBail = false; }
-                if (settings[1].Split('=')[1].ToLower() == "true") {  BailOutModePlugin.bailoutNotification = true; } //setting2
-                else { BailOutModePlugin.bailoutNotification = false; } //if its not true its false ;)
+                //if (settings[1].Split('=')[1].ToLower() == "true") {  BailOutModePlugin.bailoutNotification = true; } //setting2
+                //else { BailOutModePlugin.bailoutNotification = false; } //if its not true its false ;)
                 Console.WriteLine("[BailOut] Settings loaded from file");
             }
             else
@@ -45,7 +45,7 @@ namespace BailOutMode.Helpers
                 File.Delete(Path.Combine(Environment.CurrentDirectory, "BailOutSettings.cfg"));
                 //Console.WriteLine("[BailOut] Old settings file deleted"); trying to eliminate console spam
             }
-            string[] settings = { "BailOut=" + BailOutModePlugin.shouldIBail.ToString().ToLower(), "BailOutNotification=" + BailOutModePlugin.bailoutNotification.ToString().ToLower() };
+            string[] settings = { "BailOut=" + BailOutModePlugin.shouldIBail.ToString().ToLower() };//, "BailOutNotification=" + BailOutModePlugin.bailoutNotification.ToString().ToLower() };
             File.WriteAllLines(Path.Combine(Environment.CurrentDirectory, "BailOutSettings.cfg"), settings);
             Console.WriteLine("[BailOut] Settings file saved");
         }

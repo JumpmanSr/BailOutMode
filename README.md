@@ -1,8 +1,8 @@
 ///// Latest Updates:
 
-4-28-2020 - Update time :)
+4-28-2020 - Update time :) 1.9.0 Compatible, Ingame options added.
 
-3-24-2020: Hello, this should still work on 1.8.0 (at leaat I have not heard any complaints yet). There is a pending update so if that happens, during these corona times I'll update it. 
+3-24-2020: Hello, this should still work on 1.8.0 (at leaat I have not heard any complaints yet). There is a pending update so if that happens, during these corona times I'll update it.
 
 1-3-2020: - 10:48 PM: Hello, due to some weird changes in the game, some things did not work the same as before. Those issues have been resolved and a beta version will be releasing within a few minutes. I have to re-add ingame toggles but I just don't feel like doing that tonight.
 
