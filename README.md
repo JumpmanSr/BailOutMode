@@ -1,5 +1,7 @@
 ///// Latest Updates:
 
+4-15-2020 - I guess bailout won, this is now how no-fail works in the base game making this useless outside of purposes of archival. As such no future updates will be provided unless they change anything with no-fail again.
+
 4-28-2020 - Update time :) 1.9.0 Compatible, Ingame options added.
 
 3-24-2020: Hello, this should still work on 1.8.0 (at leaat I have not heard any complaints yet). There is a pending update so if that happens, during these corona times I'll update it.
