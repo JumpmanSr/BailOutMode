@@ -8,34 +8,34 @@ using UnityEngine;
 
 namespace BailOutMode.UI
 {
-    public class BailOutUI
-    {
-        public class BOMSettings
-        {
-            internal static BOMSettings instance = new BOMSettings();
+    //public class BailOutUI
+    //{
+    //    public class BOMSettings
+    //    {
+    //        internal static BOMSettings instance = new BOMSettings();
 
-            [UIAction("willwebail")]
-            public void Bailout()
-            {
-                BailOutModePlugin.shouldIBail = !BailOutModePlugin.shouldIBail;
-                status = bailoutstring(BailOutModePlugin.shouldIBail);
-                Helpers.Settings.saveBailoutSettings();
+    //        [UIAction("willwebail")]
+    //        public void Bailout()
+    //        {
+    //            BailOutModePlugin.shouldIBail = !BailOutModePlugin.shouldIBail;
+    //            status = bailoutstring(BailOutModePlugin.shouldIBail);
+    //            Helpers.Settings.saveBailoutSettings();
 
-            }
+    //        }
 
-            public static string bailoutstring(bool bailoutbool2)
-            {
-                string returnstring = "";
-                if (bailoutbool2) { returnstring = "Bail Out Mode is ON"; }
-                else { returnstring = "Bail Out Mode is OFF"; }
-                return returnstring;
-            }
+    //        public static string bailoutstring(bool bailoutbool2)
+    //        {
+    //            string returnstring = "";
+    //            if (bailoutbool2) { returnstring = "Bail Out Mode is ON"; }
+    //            else { returnstring = "Bail Out Mode is OFF"; }
+    //            return returnstring;
+    //        }
 
-            [UIValue("status")]
-            private string status = bailoutstring(BailOutModePlugin.shouldIBail);
-        }
+    //        [UIValue("status")]
+    //        private string status = bailoutstring(BailOutModePlugin.shouldIBail);
+    //    }
 
         
 
-    }
+    //}
 }

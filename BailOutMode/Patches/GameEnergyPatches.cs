@@ -12,7 +12,7 @@ class GameEnergyPatches
     public static void PatchMethods()
     {
         MethodInfo addEnergyInfo =
-            typeof(GameEnergyCounter).GetMethod("AddEnergy", BindingFlags.Public | BindingFlags.Instance);
+            typeof(GameEnergyCounter).GetMethod("ProcessEnergyChange", BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
         MethodInfo addEnergyPatch =
             typeof(GameEnergyPatches).GetMethod(nameof(AddEnergyPatch), BindingFlags.NonPublic | BindingFlags.Static);
         addEnergyRedirection = new Redirection(addEnergyInfo, addEnergyPatch, true);

@@ -22,9 +22,9 @@ namespace BailOutMode.Patches
             didActivateRedirection = new Redirection(didActivateInfo, didActivatePatch, true);
         }
 
-        private static void DidActivatePatch(object self, bool value1, HMUI.ViewController.ActivationType value2)
+        private static void DidActivatePatch(object self, bool v1, bool v2, bool v3)
         {
-            didActivateRedirection.InvokeOriginal(self, value1, value2);
+            didActivateRedirection.InvokeOriginal(self, v1, v2, v2);
             try
             {
                 if (BailOutModePlugin.BailedOut)

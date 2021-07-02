@@ -7,8 +7,8 @@ using IPA.Old;
 
 public class BailOutModePlugin : IPlugin
 {
-    public string Name => "BailOutMode (1.9.0 compatible)";
-    public string Version => "1.9.0";
+    public string Name => "BailOutMode (1.16.2 compatible) - JumpmanSr";
+    public string Version => "1.16.420";
     public static bool shouldIBail = true;
     public static bool bailoutNotification = false; //off by default
     public static bool BailedOut = false;
@@ -19,6 +19,7 @@ public class BailOutModePlugin : IPlugin
 
     }
 
+
     public void OnApplicationStart()
     {
         Console.WriteLine("[BailOut] Starting Bailout");
@@ -27,10 +28,10 @@ public class BailOutModePlugin : IPlugin
         PauseMenuManagerPatches.PatchMethods(); // This should prevent bailout mode from glitching out if you fail then quit.
         Console.WriteLine("[BailOut] Assembly Patched");
         Settings.loadBailoutSettings();
-        BeatSaberMarkupLanguage.Settings.BSMLSettings.instance.AddSettingsMenu("BailOutMode", "BailOutMode.UI.settings.bsml", BailOutMode.UI.BailOutUI.BOMSettings.instance);
+        //BeatSaberMarkupLanguage.Settings.BSMLSettings.instance.AddSettingsMenu("BailOutMode", "BailOutMode.UI.settings.bsml", BailOutMode.UI.BailOutUI.BOMSettings.instance);
 
 
-        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        //SceneManager.sceneLoaded += SceneManager_sceneLoaded;
 
 
     }
