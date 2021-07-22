@@ -1,4 +1,7 @@
 ///// Latest Updates:
+
+7-22-2021 - Game updated to version 1.16.13. It should still work as long as BSUtils is updated (if it's not already still working).
+
 7-2-2021 - Had a few people ask for an update so I did a quick one. Ingame toggles are currently disabled but there is a CFG file you can edit to disable/enable BailOut between launches of the game. 
 
 4-15-2021 - I guess bailout won, this is now how no-fail works in the base game making this useless outside of purposes of archival. As such no future updates will be provided unless they change anything with no-fail again.
