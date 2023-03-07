@@ -1,4 +1,0 @@
-﻿<settings-container>
-  <button text='Toggle BailOut Mode' on-click='willwebail'></button>
-  <text text='~status'></text>
-</settings-container>
